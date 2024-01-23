@@ -8,7 +8,7 @@ import { checkAuth, handleValidationErrors} from './utils/index.js';
 import { config } from 'dotenv';
 
 const processENV = config().parsed;
-const uri = processENV.MONGODB_URI;
+const uri = process.env["MONGODB_URI"] || processENV.MONGODB_URI;
 
 mongoose
     .connect(uri)
@@ -77,7 +77,7 @@ app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
 });
 
 // SET PORT LISTENER
-app.listen(processENV.PORT || 4444, (err) => {
+app.listen(process.env["PORT"] || processENV.PORT || 4444, (err) => {
     if (err) {
         return console.log(err);
     }
