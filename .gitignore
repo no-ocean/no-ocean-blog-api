@@ -1,0 +1,14 @@
+# Keep node modules folder out of version control
+node_modules
+# Keep environment variables out of version control
+.env
+
+# production
+/build
+build/
+
+# misc
+.DS_Store
+*.pem
+.idea
+.vscode
